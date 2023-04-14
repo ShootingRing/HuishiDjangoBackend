@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>username</td>
+        <td>password</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for User in userQueryset %}
+        <tr>
+            <td>{{ User.id }}</td>
+            <td>{{ User.username }}</td>
+            <td>{{ User.password }}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+</body>
+</html>
