@@ -6,7 +6,7 @@ from APP import models
 
 class login:
 
-    def LoginSuccess(username, password):
+    def LoginSuccess(username):
         token = get_token(username, 60)
         models.User.objects.filter(username=username).update(token=token)
         return Response(
@@ -15,7 +15,8 @@ class login:
                 'message': 'Login Success',
                 'data': {
                     'username': username,
-                    'token': token
+                    'token': token,
+                    'roles': 'editor'
                 }
             },
             status=statusCode.OKCode
@@ -56,3 +57,16 @@ class login:
         },
         status=statusCode.MissingJSONCode
     )
+
+    def UserInfo(username, roles):
+        return Response(
+            data={
+                'code': statusCode.OKCode,
+                'message': 'Get User Roles Success',
+                'data': {
+                    'username': username,
+                    'roles': roles
+                }
+            },
+            status=statusCode.OKCode
+        )

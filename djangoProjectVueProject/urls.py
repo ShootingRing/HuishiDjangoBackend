@@ -20,7 +20,8 @@ from rest_framework.documentation import include_docs_urls
 from . import views
 
 urlpatterns = [
-    path('users/login', views.login),
+    path('login', views.login),
     path('userlist', views.userlist),
     path('detection', views.detection),
+    path('users/info', views.getUserInfo),
 ]
